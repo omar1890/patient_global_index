@@ -2,7 +2,7 @@
 
 Route::get('/test',function (\Request $request) {
     // return \Config::get('app.url');
-    return request()->header('Host');
+    return request()->fullUrl();
 });
 
 Route::redirect('/', '/login');
