@@ -1,7 +1,8 @@
 <?php
 
-Route::get('/test',function () {
-    return url('');
+Route::get('/test',function (\Request $request) {
+    // return \Config::get('app.url');
+    return request()->fullUrl();
 });
 
 Route::redirect('/', '/login');
