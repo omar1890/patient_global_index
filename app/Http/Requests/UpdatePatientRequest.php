@@ -40,6 +40,9 @@ class UpdatePatientRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'documents' => [
+                'array',
+            ],
         ];
     }
 }

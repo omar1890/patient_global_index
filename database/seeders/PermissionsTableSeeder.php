@@ -200,6 +200,66 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 48,
+                'title' => 'medicine_create',
+            ],
+            [
+                'id'    => 49,
+                'title' => 'medicine_edit',
+            ],
+            [
+                'id'    => 50,
+                'title' => 'medicine_show',
+            ],
+            [
+                'id'    => 51,
+                'title' => 'medicine_delete',
+            ],
+            [
+                'id'    => 52,
+                'title' => 'medicine_access',
+            ],
+            [
+                'id'    => 53,
+                'title' => 'patient_medicine_create',
+            ],
+            [
+                'id'    => 54,
+                'title' => 'patient_medicine_edit',
+            ],
+            [
+                'id'    => 55,
+                'title' => 'patient_medicine_show',
+            ],
+            [
+                'id'    => 56,
+                'title' => 'patient_medicine_delete',
+            ],
+            [
+                'id'    => 57,
+                'title' => 'patient_medicine_access',
+            ],
+            [
+                'id'    => 58,
+                'title' => 'patient_visit_create',
+            ],
+            [
+                'id'    => 59,
+                'title' => 'patient_visit_edit',
+            ],
+            [
+                'id'    => 60,
+                'title' => 'patient_visit_show',
+            ],
+            [
+                'id'    => 61,
+                'title' => 'patient_visit_delete',
+            ],
+            [
+                'id'    => 62,
+                'title' => 'patient_visit_access',
+            ],
+            [
+                'id'    => 63,
                 'title' => 'profile_password_edit',
             ],
         ];

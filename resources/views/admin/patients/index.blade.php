@@ -50,6 +50,9 @@
                             {{ trans('cruds.patient.fields.identity_number') }}
                         </th>
                         <th>
+                            {{ trans('cruds.patient.fields.documents') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -94,6 +97,8 @@
                         </td>
                         <td>
                         </td>
+                        <td>
+                        </td>
                     </tr>
                 </thead>
                 <tbody>
@@ -129,6 +134,13 @@
                             </td>
                             <td>
                                 {{ $patient->identity_number ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($patient->documents as $key => $media)
+                                    <a href="{{ $media->getUrl() }}" target="_blank">
+                                        {{ trans('global.view_file') }}
+                                    </a>
+                                @endforeach
                             </td>
                             <td>
                                 @can('patient_show')

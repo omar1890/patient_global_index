@@ -40,6 +40,9 @@ class StorePatientRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'documents' => [
+                'array',
+            ],
         ];
     }
 }

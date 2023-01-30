@@ -1,10 +1,5 @@
 <?php
 
-Route::get('/test',function (\Request $request) {
-    // return \Config::get('app.url');
-    return request()->fullUrl();
-});
-
 Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
@@ -38,6 +33,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Patient
     Route::delete('patients/destroy', 'PatientController@massDestroy')->name('patients.massDestroy');
+    Route::post('patients/media', 'PatientController@storeMedia')->name('patients.storeMedia');
+    Route::post('patients/ckmedia', 'PatientController@storeCKEditorImages')->name('patients.storeCKEditorImages');
     Route::resource('patients', 'PatientController');
 
     // Surgery
@@ -55,6 +52,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Allergy
     Route::delete('allergies/destroy', 'AllergyController@massDestroy')->name('allergies.massDestroy');
     Route::resource('allergies', 'AllergyController');
+
+    // Medicine
+    Route::delete('medicines/destroy', 'MedicineController@massDestroy')->name('medicines.massDestroy');
+    Route::resource('medicines', 'MedicineController');
+
+    // Patient Medicine
+    Route::delete('patient-medicines/destroy', 'PatientMedicineController@massDestroy')->name('patient-medicines.massDestroy');
+    Route::resource('patient-medicines', 'PatientMedicineController');
+
+    // Patient Visit
+    Route::delete('patient-visits/destroy', 'PatientVisitController@massDestroy')->name('patient-visits.massDestroy');
+    Route::post('patient-visits/media', 'PatientVisitController@storeMedia')->name('patient-visits.storeMedia');
+    Route::post('patient-visits/ckmedia', 'PatientVisitController@storeCKEditorImages')->name('patient-visits.storeCKEditorImages');
+    Route::resource('patient-visits', 'PatientVisitController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
