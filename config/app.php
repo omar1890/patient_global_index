@@ -54,7 +54,8 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://koko'),
+    // 'url' => env('APP_URL', 'http://localhost'),
+    'url' => 'http://google.com',
 
     'asset_url' => env('ASSET_URL'),
 
