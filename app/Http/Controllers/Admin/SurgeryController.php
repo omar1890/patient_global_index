@@ -29,7 +29,7 @@ class SurgeryController extends Controller
     {
         abort_if(Gate::denies('surgery_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $patients = Patient::pluck('smoking', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $patients = Patient::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.surgeries.create', compact('patients'));
     }
@@ -45,7 +45,7 @@ class SurgeryController extends Controller
     {
         abort_if(Gate::denies('surgery_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $patients = Patient::pluck('smoking', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $patients = Patient::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $surgery->load('patient');
 

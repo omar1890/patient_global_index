@@ -65,8 +65,6 @@ return [
             'deleted_at_helper'        => ' ',
             'mobile'                   => 'Mobile',
             'mobile_helper'            => ' ',
-            'identity_number'          => 'Identity Number',
-            'identity_number_helper'   => ' ',
         ],
     ],
     'hospital' => [
@@ -257,8 +255,6 @@ return [
             'updated_at_helper'    => ' ',
             'deleted_at'           => 'Deleted at',
             'deleted_at_helper'    => ' ',
-            'patient_visit'        => 'Patient Visit',
-            'patient_visit_helper' => ' ',
             'dose'                 => 'Dose',
             'dose_helper'          => ' ',
             'start_date'           => 'Start Date',

@@ -32,10 +32,6 @@ class UpdateUserRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'identity_number' => [
-                'string',
-                'nullable',
-            ],
         ];
     }
 }

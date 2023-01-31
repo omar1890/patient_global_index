@@ -44,7 +44,7 @@
                             {{ trans('cruds.allergy.fields.patient') }}
                         </th>
                         <td>
-                            {{ $allergy->patient->smoking ?? '' }}
+                            {{ $allergy->patient->name ?? '' }}
                         </td>
                     </tr>
                 </tbody>

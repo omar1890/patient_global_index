@@ -96,7 +96,7 @@ class PatientVisitController extends Controller
     {
         abort_if(Gate::denies('patient_visit_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $patientVisit->load('hospital', 'patient', 'patientVisitPatientMedicines');
+        $patientVisit->load('hospital', 'patient');
 
         return view('admin.patientVisits.show', compact('patientVisit'));
     }

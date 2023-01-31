@@ -68,7 +68,7 @@
             </li>
         @endcan
         @can('patient_record_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/patients*") ? "c-show" : "" }} {{ request()->is("admin/surgeries*") ? "c-show" : "" }} {{ request()->is("admin/diseases*") ? "c-show" : "" }} {{ request()->is("admin/vaccines*") ? "c-show" : "" }} {{ request()->is("admin/allergies*") ? "c-show" : "" }} {{ request()->is("admin/medicines*") ? "c-show" : "" }} {{ request()->is("admin/patient-visits*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/patients*") ? "c-show" : "" }} {{ request()->is("admin/surgeries*") ? "c-show" : "" }} {{ request()->is("admin/diseases*") ? "c-show" : "" }} {{ request()->is("admin/vaccines*") ? "c-show" : "" }} {{ request()->is("admin/allergies*") ? "c-show" : "" }} {{ request()->is("admin/medicines*") ? "c-show" : "" }} {{ request()->is("admin/patient-medicines*") ? "c-show" : "" }} {{ request()->is("admin/patient-visits*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-book c-sidebar-nav-icon">
 
@@ -136,10 +136,20 @@
                             </a>
                         </li>
                     @endcan
+                    @can('patient_medicine_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.patient-medicines.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/patient-medicines") || request()->is("admin/patient-medicines/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-prescription-bottle-alt c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.patientMedicine.title') }}
+                            </a>
+                        </li>
+                    @endcan
                     @can('patient_visit_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.patient-visits.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/patient-visits") || request()->is("admin/patient-visits/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-user c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.patientVisit.title') }}
@@ -147,16 +157,6 @@
                         </li>
                     @endcan
                 </ul>
-            </li>
-        @endcan
-        @can('patient_medicine_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.patient-medicines.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/patient-medicines") || request()->is("admin/patient-medicines/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.patientMedicine.title') }}
-                </a>
             </li>
         @endcan
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))

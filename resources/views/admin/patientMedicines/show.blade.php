@@ -41,14 +41,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.patientMedicine.fields.patient_visit') }}
-                        </th>
-                        <td>
-                            {{ $patientMedicine->patient_visit->doctor_name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.patientMedicine.fields.dose') }}
                         </th>
                         <td>
