@@ -39,20 +39,6 @@
                 <span class="help-block">{{ trans('cruds.patientMedicine.fields.patient_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="patient_visit_id">{{ trans('cruds.patientMedicine.fields.patient_visit') }}</label>
-                <select class="form-control select2 {{ $errors->has('patient_visit') ? 'is-invalid' : '' }}" name="patient_visit_id" id="patient_visit_id">
-                    @foreach($patient_visits as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('patient_visit_id') ? old('patient_visit_id') : $patientMedicine->patient_visit->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('patient_visit'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('patient_visit') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.patientMedicine.fields.patient_visit_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="dose">{{ trans('cruds.patientMedicine.fields.dose') }}</label>
                 <input class="form-control {{ $errors->has('dose') ? 'is-invalid' : '' }}" type="text" name="dose" id="dose" value="{{ old('dose', $patientMedicine->dose) }}">
                 @if($errors->has('dose'))

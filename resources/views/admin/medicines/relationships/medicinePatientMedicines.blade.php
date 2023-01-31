@@ -34,15 +34,6 @@
                             {{ trans('cruds.patientMedicine.fields.patient') }}
                         </th>
                         <th>
-                            {{ trans('cruds.patientMedicine.fields.patient_visit') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.patientVisit.fields.date') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.patientVisit.fields.division') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.patientMedicine.fields.dose') }}
                         </th>
                         <th>
@@ -78,15 +69,6 @@
                             </td>
                             <td>
                                 {{ $patientMedicine->patient->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $patientMedicine->patient_visit->doctor_name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $patientMedicine->patient_visit->date ?? '' }}
-                            </td>
-                            <td>
-                                {{ $patientMedicine->patient_visit->division ?? '' }}
                             </td>
                             <td>
                                 {{ $patientMedicine->dose ?? '' }}

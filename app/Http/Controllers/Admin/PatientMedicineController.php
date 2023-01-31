@@ -9,7 +9,6 @@ use App\Http\Requests\UpdatePatientMedicineRequest;
 use App\Models\Medicine;
 use App\Models\Patient;
 use App\Models\PatientMedicine;
-use App\Models\PatientVisit;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,15 +19,13 @@ class PatientMedicineController extends Controller
     {
         abort_if(Gate::denies('patient_medicine_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $patientMedicines = PatientMedicine::with(['medicine', 'patient', 'patient_visit'])->get();
+        $patientMedicines = PatientMedicine::with(['medicine', 'patient'])->get();
 
         $medicines = Medicine::get();
 
         $patients = Patient::get();
 
-        $patient_visits = PatientVisit::get();
-
-        return view('admin.patientMedicines.index', compact('medicines', 'patientMedicines', 'patient_visits', 'patients'));
+        return view('admin.patientMedicines.index', compact('medicines', 'patientMedicines', 'patients'));
     }
 
     public function create()
@@ -39,9 +36,7 @@ class PatientMedicineController extends Controller
 
         $patients = Patient::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $patient_visits = PatientVisit::pluck('doctor_name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.patientMedicines.create', compact('medicines', 'patient_visits', 'patients'));
+        return view('admin.patientMedicines.create', compact('medicines', 'patients'));
     }
 
     public function store(StorePatientMedicineRequest $request)
@@ -59,11 +54,9 @@ class PatientMedicineController extends Controller
 
         $patients = Patient::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $patient_visits = PatientVisit::pluck('doctor_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $patientMedicine->load('medicine', 'patient');
 
-        $patientMedicine->load('medicine', 'patient', 'patient_visit');
-
-        return view('admin.patientMedicines.edit', compact('medicines', 'patientMedicine', 'patient_visits', 'patients'));
+        return view('admin.patientMedicines.edit', compact('medicines', 'patientMedicine', 'patients'));
     }
 
     public function update(UpdatePatientMedicineRequest $request, PatientMedicine $patientMedicine)
@@ -77,7 +70,7 @@ class PatientMedicineController extends Controller
     {
         abort_if(Gate::denies('patient_medicine_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $patientMedicine->load('medicine', 'patient', 'patient_visit');
+        $patientMedicine->load('medicine', 'patient');
 
         return view('admin.patientMedicines.show', compact('patientMedicine'));
     }
