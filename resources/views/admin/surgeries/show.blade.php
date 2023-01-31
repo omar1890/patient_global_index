@@ -68,7 +68,7 @@
                             {{ trans('cruds.surgery.fields.patient') }}
                         </th>
                         <td>
-                            {{ $surgery->patient->smoking ?? '' }}
+                            {{ $surgery->patient->name ?? '' }}
                         </td>
                     </tr>
                 </tbody>

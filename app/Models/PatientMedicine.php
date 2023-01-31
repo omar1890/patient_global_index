@@ -23,7 +23,6 @@ class PatientMedicine extends Model
     protected $fillable = [
         'medicine_id',
         'patient_id',
-        'patient_visit_id',
         'dose',
         'start_date',
         'end_date',
@@ -41,11 +40,6 @@ class PatientMedicine extends Model
     public function patient()
     {
         return $this->belongsTo(Patient::class, 'patient_id');
-    }
-
-    public function patient_visit()
-    {
-        return $this->belongsTo(PatientVisit::class, 'patient_visit_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

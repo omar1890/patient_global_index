@@ -57,14 +57,6 @@
                             {{ $user->mobile }}
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.identity_number') }}
-                        </th>
-                        <td>
-                            {{ $user->identity_number }}
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

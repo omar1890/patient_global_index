@@ -48,11 +48,6 @@ class PatientVisit extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function patientVisitPatientMedicines()
-    {
-        return $this->hasMany(PatientMedicine::class, 'patient_visit_id', 'id');
-    }
-
     public function hospital()
     {
         return $this->belongsTo(Hospital::class, 'hospital_id');

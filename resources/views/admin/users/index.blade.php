@@ -38,9 +38,6 @@
                             {{ trans('cruds.user.fields.mobile') }}
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.identity_number') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -67,9 +64,6 @@
                             </td>
                             <td>
                                 {{ $user->mobile ?? '' }}
-                            </td>
-                            <td>
-                                {{ $user->identity_number ?? '' }}
                             </td>
                             <td>
                                 @can('user_show')

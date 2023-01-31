@@ -13,8 +13,6 @@ class AddRelationshipFieldsToPatientMedicinesTable extends Migration
             $table->foreign('medicine_id', 'medicine_fk_7952705')->references('id')->on('medicines');
             $table->unsignedBigInteger('patient_id')->nullable();
             $table->foreign('patient_id', 'patient_fk_7952706')->references('id')->on('patients');
-            $table->unsignedBigInteger('patient_visit_id')->nullable();
-            $table->foreign('patient_visit_id', 'patient_visit_fk_7952797')->references('id')->on('patient_visits');
         });
     }
 }

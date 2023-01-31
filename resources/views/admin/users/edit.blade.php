@@ -59,16 +59,6 @@
                 <span class="help-block">{{ trans('cruds.user.fields.mobile_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="identity_number">{{ trans('cruds.user.fields.identity_number') }}</label>
-                <input class="form-control {{ $errors->has('identity_number') ? 'is-invalid' : '' }}" type="text" name="identity_number" id="identity_number" value="{{ old('identity_number', $user->identity_number) }}">
-                @if($errors->has('identity_number'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('identity_number') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.identity_number_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
