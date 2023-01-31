@@ -87,6 +87,18 @@
                             {{ $patient->identity_number }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.patient.fields.documents') }}
+                        </th>
+                        <td>
+                            @foreach($patient->documents as $key => $media)
+                                <a href="{{ $media->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endforeach
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
@@ -123,6 +135,11 @@
                 {{ trans('cruds.allergy.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#patient_patient_visits" role="tab" data-toggle="tab">
+                {{ trans('cruds.patientVisit.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="patient_surgeries">
@@ -136,6 +153,9 @@
         </div>
         <div class="tab-pane" role="tabpanel" id="patient_allergies">
             @includeIf('admin.patients.relationships.patientAllergies', ['allergies' => $patient->patientAllergies])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="patient_patient_visits">
+            @includeIf('admin.patients.relationships.patientPatientVisits', ['patientVisits' => $patient->patientPatientVisits])
         </div>
     </div>
 </div>
