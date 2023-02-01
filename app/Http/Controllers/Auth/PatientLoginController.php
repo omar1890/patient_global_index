@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class LoginController extends Controller
+class PatientLoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -38,8 +38,13 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function redirectTo()
+    public function username()
     {
-        return '/register/patient';
+        return 'mobile';
+    }
+
+    function loginView()
+    {
+        return view('auth.patient-login');
     }
 }
