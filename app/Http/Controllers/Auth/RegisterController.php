@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Hospital;
+use App\Models\Patient;
+use App\Models\Role;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -47,23 +51,57 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name'     => ['required', 'string', 'max:255'],
-            'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+    }
+
+    protected function register()
+    {
+        return view('auth.register-patient');
+    }
+    protected function registerHospital()
+    {
+        return view('auth.register-hospital');
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @return \App\User
+     * @return \Illuminate\Http\RedirectResponse
      */
-    protected function create(array $data)
+    protected function create(Request $request)
     {
-        return User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'password' => Hash::make($data['password']),
+        $user = User::create([
+            'name' => $request->get('name'),
+            'mobile' => $request->get('mobile'),
+            'password' => Hash::make($request->get('password')),
         ]);
+        $patient = Patient::create([
+            'name' => $request->get('name'),
+            'identity_number' => $request->get('identity_number'),
+            'user_id' => $user->id
+        ]);
+        $role = Role::where('title', 'patient')->first();
+        $user->roles()->sync([$role->id]);
+        session()->put('url.intended', "/admin/patients/$patient->id/edit");
+        return redirect()->route('view.patient.login');
+    }
+    protected function createHospital(Request $request)
+    {
+        $user = User::create([
+            'name' => $request->get('name'),
+            'mobile' => $request->get('mobile'),
+            'password' => Hash::make($request->get('password')),
+        ]);
+        $hospital = Hospital::create([
+            'name' => $request->get('hospital_name'),
+            'address' => $request->get('address'),
+        ]);
+        $role = Role::where('title', 'hospital')->first();
+        $user->roles()->sync([$role->id]);
+
+//        return redirect()->to("/admin/patients/$patient->id/edit");
     }
 }

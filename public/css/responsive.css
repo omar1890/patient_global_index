@@ -1,0 +1,149 @@
+
+
+@media(max-width: 1199px){
+    .home-section .home-img{
+        text-align: center;
+    }
+    .home-section .home-img img{
+        margin-left: 100px;
+        left: auto;
+        top: auto;
+
+    }
+
+    .footer-logo {
+        margin-left: 90px;
+    }
+    
+    .footer-text{
+        margin-left: 90px;
+    }
+
+    .footer-social-links{
+        margin-left: 90px;
+    }
+}
+
+
+@media(max-width: 991px){
+
+    
+    .header{
+        padding: 5px 0;
+    }
+
+.header .navbar #collapsibleNavbar .nav-item .nav-link{
+    padding: 10px 15px 10px ;
+}
+
+.section-title{
+    margin-left: 100px;
+}
+
+.about-content ul #problem{
+    margin-left: 100px;
+}
+
+#p-img{
+margin-right: 200px;
+}
+
+
+.header .navbar-light .navbar-toggler{
+
+    background-color: aliceblue;
+    padding: 0;
+    height: 38px;
+    width: 45px;
+    border: none;
+}
+
+.header .navbar-light .navbar-toggler:focus{
+    outline: none;
+}
+
+.header .navbar-light .navbar-toggler-icon{
+    background-image: none;
+    height: 2px;
+    width: 24px;
+    position: relative;
+    background-color: #0275d8;
+}
+
+.header .navbar-light .navbar-toggler-icon::before{
+   content: '';
+   position: absolute;
+   height: 2px;
+   width: 100%;
+   background-color: #0275d8;
+   left: 0;
+   top: -6px;
+}
+
+.header .navbar-light .navbar-toggler-icon::after{
+    
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: #0275d8;
+    left: 0;
+    top: 6px;
+    
+}
+
+.home-section .home-img{
+    margin-right: 250px;
+    margin-bottom: 40px;
+}
+
+.home-section{
+    padding: 150px 0 150px;
+}
+
+
+
+}
+
+@media(max-width: 767px){
+
+    .home-section .home-content h1{
+        font-size: 40px;
+        line-height: 44px;
+
+    }
+
+    .footer-logo {
+        margin-left: 90px;
+    }
+    
+    .footer-text{
+        margin-left: 90px;
+    }
+
+    .footer-social-links{
+        margin-left: 90px;
+    }
+
+}
+
+@media(max-width: 575px){
+    .container{
+        padding-left: 30px;
+        padding-right: 30px;
+
+    }
+
+    .footer-logo {
+        margin-left: 90px;
+    }
+    
+    .footer-text{
+        margin-left: 90px;
+    }
+
+    .footer-social-links{
+        margin-left: 90px;
+    }
+}
+

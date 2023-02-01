@@ -85,4 +85,17 @@ class User extends Authenticatable
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function isPatient() {
+        return $this->roles()->where('title', 'patient')->exists();
+    }
+
+    public function isHospital() {
+        return $this->roles()->where('title', 'patient')->exists();
+    }
+
+    public function hasRole($role)
+    {
+        return $this->roles()->where('title', $role)->exists();
+    }
 }

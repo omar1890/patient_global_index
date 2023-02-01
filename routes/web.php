@@ -9,6 +9,12 @@ Route::get('/home', function () {
     return redirect()->route('admin.home');
 });
 
+Route::get('/login/patient', 'Auth\PatientLoginController@loginView')->name('view.patient.login');
+Route::post('/login/patient', 'Auth\PatientLoginController@login')->name('patient.login');
+
+Route::get('/register/patient', 'Auth\RegisterController@register')->name('view.patient.register');
+Route::post('/register', 'Auth\RegisterController@create')->name('create.patient');
+
 Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
