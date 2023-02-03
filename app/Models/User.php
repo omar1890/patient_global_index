@@ -49,9 +49,9 @@ class User extends Authenticatable
         return $this->roles()->where('id', 1)->exists();
     }
 
-    public function userPatients()
+    public function patient()
     {
-        return $this->hasMany(Patient::class, 'user_id', 'id');
+        return $this->hasOne(Patient::class, 'user_id', 'id');
     }
 
     public function hospital()
