@@ -11,6 +11,7 @@ use App\Models\Patient;
 use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -22,10 +23,18 @@ class PatientController extends Controller
     {
         abort_if(Gate::denies('patient_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $patients = Patient::with(['user', 'media'])->get();
+        $patientsQuery = Patient::with(['user', 'media']);
 
+        // only show patient for hospital who has at least one visit
+        if (Auth::user()->isHospital()) {
+            $patientsQuery->with(['patientPatientVisits' => function ($patientVisit) {
+                $patientVisit->where('hospital_id', Auth::user()->hospital->id);
+            }]);
+            $patientsQuery->whereHas('patientPatientVisits');
+        }
+
+        $patients = $patientsQuery->get();
         $users = User::get();
-
         return view('admin.patients.index', compact('patients', 'users'));
     }
 
@@ -114,10 +123,10 @@ class PatientController extends Controller
     {
         abort_if(Gate::denies('patient_create') && Gate::denies('patient_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new Patient();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new Patient();
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
