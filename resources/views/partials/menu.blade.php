@@ -59,7 +59,13 @@
         @endcan
         @can('hospital_access')
             <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.hospitals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/hospitals") || request()->is("admin/hospitals/*") ? "c-active" : "" }}">
+                <a
+                    @if(\Auth::user()->isHospital())
+                        href="{{ url("/admin/hospitals/".Auth::user()->hospital->id."/edit")  }}"
+                    @else
+                        href="{{ route("admin.hospitals.index") }}"
+                    @endif
+                   class="c-sidebar-nav-link {{ request()->is("admin/hospitals") || request()->is("admin/hospitals/*") ? "c-active" : "" }}">
                     <i class="fa-fw fas fa-h-square c-sidebar-nav-icon">
 
                     </i>
@@ -78,7 +84,19 @@
                 <ul class="c-sidebar-nav-dropdown-items">
                     @can('patient_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.patients.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/patients") || request()->is("admin/patients/*") ? "c-active" : "" }}">
+                            {{-- <a href="{{ route("admin.patients.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/patients") || request()->is("admin/patients/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-wheelchair c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.patient.title') }}
+                            </a> --}}
+                            <a
+                                @if(\Auth::user()->isPatient())
+                                    href="{{ url("/admin/patients/".Auth::user()->patient->id."/edit")  }}"
+                                @else
+                                    href="{{ route("admin.patients.index") }}"
+                                @endif
+                            class="c-sidebar-nav-link {{ request()->is("admin/patients") || request()->is("admin/patients/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-wheelchair c-sidebar-nav-icon">
 
                                 </i>
