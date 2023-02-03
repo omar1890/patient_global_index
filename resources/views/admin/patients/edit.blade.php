@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header">
             @if(\Auth::user()->isPatient())
-                {{ 'Continue your profile' }}
+                <strong>{{ 'Continue your profile' }}</strong>
             @else
                 {{ trans('global.edit') }} {{ trans('cruds.patient.title_singular') }}
             @endif
