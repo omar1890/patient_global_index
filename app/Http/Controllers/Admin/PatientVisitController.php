@@ -12,6 +12,7 @@ use App\Models\Patient;
 use App\Models\PatientVisit;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -23,8 +24,11 @@ class PatientVisitController extends Controller
     {
         abort_if(Gate::denies('patient_visit_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $patientVisits = PatientVisit::with(['hospital', 'patient', 'media'])->get();
-
+        $patientVisitsQuery = PatientVisit::with(['hospital', 'patient', 'media']);
+        if(Auth::user()->isHospital()) {
+            $patientVisitsQuery->where('hospital_id',Auth::user()->hospital->id);
+        }
+        $patientVisits = $patientVisitsQuery->get();
         $hospitals = Hospital::get();
 
         $patients = Patient::get();
