@@ -50,6 +50,6 @@ http://localhost:9001
 
 ## system is already up and working on the below url if you do not want to do all the above configs
 
-http://8.213.24.151/
+http://alb-5vuzizdmjzcvjttcp8.me-central-1.alb.aliyuncs.com/
 
 

@@ -8,4 +8,9 @@ class HomeController
     {
         return view('home');
     }
+
+    public function landingPage()
+    {
+        return view('landing-page');
+    }
 }

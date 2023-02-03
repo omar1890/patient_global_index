@@ -1,6 +1,9 @@
 <?php
 
-Route::redirect('/', '/login');
+//Route::redirect('/', '/login');
+
+Route::get('/', 'Admin\HomeController@landingPage');
+
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
@@ -12,8 +15,8 @@ Route::get('/home', function () {
 Route::get('/login/patient', 'Auth\PatientLoginController@loginView')->name('view.patient.login');
 Route::post('/login/patient', 'Auth\PatientLoginController@login')->name('patient.login');
 
-Route::get('/register/hospital','Auth\RegisterController@registerHospital')->name('view.register.hospital');
-Route::post('/register/hospital','Auth\RegisterController@createHospital')->name('create.hospital');
+Route::get('/register/hospital', 'Auth\RegisterController@registerHospital')->name('view.register.hospital');
+Route::post('/register/hospital', 'Auth\RegisterController@createHospital')->name('create.hospital');
 
 Route::get('/register/patient', 'Auth\RegisterController@register')->name('view.patient.register');
 Route::post('/register', 'Auth\RegisterController@create')->name('create.patient');
