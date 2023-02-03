@@ -26,8 +26,7 @@
                 <ul class="c-sidebar-nav-dropdown-items">
                     @can('permission_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.permissions.index") }}"
-                               class="c-sidebar-nav-link {{ request()->is("admin/permissions") || request()->is("admin/permissions/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.permissions.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/permissions") || request()->is("admin/permissions/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-unlock-alt c-sidebar-nav-icon">
 
                                 </i>
@@ -37,8 +36,7 @@
                     @endcan
                     @can('role_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.roles.index") }}"
-                               class="c-sidebar-nav-link {{ request()->is("admin/roles") || request()->is("admin/roles/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.roles.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/roles") || request()->is("admin/roles/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-briefcase c-sidebar-nav-icon">
 
                                 </i>
@@ -48,8 +46,7 @@
                     @endcan
                     @can('user_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.users.index") }}"
-                               class="c-sidebar-nav-link {{ request()->is("admin/users") || request()->is("admin/users/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.users.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/users") || request()->is("admin/users/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-user c-sidebar-nav-icon">
 
                                 </i>
@@ -87,8 +84,19 @@
                 <ul class="c-sidebar-nav-dropdown-items">
                     @can('patient_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.patients.index") }}"
-                               class="c-sidebar-nav-link {{ request()->is("admin/patients") || request()->is("admin/patients/*") ? "c-active" : "" }}">
+                            {{-- <a href="{{ route("admin.patients.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/patients") || request()->is("admin/patients/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-wheelchair c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.patient.title') }}
+                            </a> --}}
+                            <a
+                                @if(\Auth::user()->isPatient())
+                                    href="{{ url("/admin/patients/".Auth::user()->patient->id."/edit")  }}"
+                                @else
+                                    href="{{ route("admin.patients.index") }}"
+                                @endif
+                            class="c-sidebar-nav-link {{ request()->is("admin/patients") || request()->is("admin/patients/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-wheelchair c-sidebar-nav-icon">
 
                                 </i>
@@ -98,13 +106,7 @@
                     @endcan
                     @can('surgery_access')
                         <li class="c-sidebar-nav-item">
-                            <a
-                                @if(\Auth::user()->isHospital())
-                                    href="{{ route('admin.surgeries.create') }}"
-                                @else
-                                    href="{{ route("admin.surgeries.index") }}"
-                                @endif
-                               class="c-sidebar-nav-link {{ request()->is("admin/surgeries") || request()->is("admin/surgeries/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.surgeries.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/surgeries") || request()->is("admin/surgeries/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-cut c-sidebar-nav-icon">
 
                                 </i>
@@ -114,13 +116,7 @@
                     @endcan
                     @can('disease_access')
                         <li class="c-sidebar-nav-item">
-                            <a
-                                @if(\Auth::user()->isHospital())
-                                    href="{{ route("admin.diseases.create") }}"
-                                @else
-                                    href="{{ route("admin.diseases.index") }}"
-                                @endif
-                                class="c-sidebar-nav-link {{ request()->is("admin/diseases") || request()->is("admin/diseases/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.diseases.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/diseases") || request()->is("admin/diseases/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-bug c-sidebar-nav-icon">
 
                                 </i>
@@ -130,14 +126,7 @@
                     @endcan
                     @can('vaccine_access')
                         <li class="c-sidebar-nav-item">
-                            <a
-                                @if(\Auth::user()->isHospital())
-                                    href="{{ route("admin.vaccines.create") }}"
-                                @else
-                                    href="{{ route("admin.vaccines.index") }}"
-                                @endif
-
-                               class="c-sidebar-nav-link {{ request()->is("admin/vaccines") || request()->is("admin/vaccines/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.vaccines.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/vaccines") || request()->is("admin/vaccines/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-syringe c-sidebar-nav-icon">
 
                                 </i>
@@ -147,14 +136,7 @@
                     @endcan
                     @can('allergy_access')
                         <li class="c-sidebar-nav-item">
-                            <a
-                                @if(\Auth::user()->isHospital())
-                                    href="{{ route("admin.allergies.create") }}"
-                                @else
-                                    href="{{ route("admin.allergies.index") }}"
-                                @endif
-
-                               class="c-sidebar-nav-link {{ request()->is("admin/allergies") || request()->is("admin/allergies/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.allergies.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/allergies") || request()->is("admin/allergies/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-allergies c-sidebar-nav-icon">
 
                                 </i>
@@ -164,8 +146,7 @@
                     @endcan
                     @can('medicine_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.medicines.index") }}"
-                               class="c-sidebar-nav-link {{ request()->is("admin/medicines") || request()->is("admin/medicines/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.medicines.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/medicines") || request()->is("admin/medicines/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-prescription-bottle c-sidebar-nav-icon">
 
                                 </i>
@@ -175,13 +156,7 @@
                     @endcan
                     @can('patient_medicine_access')
                         <li class="c-sidebar-nav-item">
-                            <a
-                                @if(\Auth::user()->isHospital())
-                                    href="{{ route("admin.patient-medicines.create") }}"
-                                @else
-                                    href="{{ route("admin.patient-medicines.index") }}"
-                                @endif
-                               class="c-sidebar-nav-link {{ request()->is("admin/patient-medicines") || request()->is("admin/patient-medicines/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.patient-medicines.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/patient-medicines") || request()->is("admin/patient-medicines/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-prescription-bottle-alt c-sidebar-nav-icon">
 
                                 </i>
@@ -191,8 +166,7 @@
                     @endcan
                     @can('patient_visit_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.patient-visits.index") }}"
-                               class="c-sidebar-nav-link {{ request()->is("admin/patient-visits") || request()->is("admin/patient-visits/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.patient-visits.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/patient-visits") || request()->is("admin/patient-visits/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-user c-sidebar-nav-icon">
 
                                 </i>
@@ -206,8 +180,7 @@
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}"
-                       href="{{ route('profile.password.edit') }}">
+                    <a class="c-sidebar-nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}" href="{{ route('profile.password.edit') }}">
                         <i class="fa-fw fas fa-key c-sidebar-nav-icon">
                         </i>
                         {{ trans('global.change_password') }}
@@ -216,8 +189,7 @@
             @endcan
         @endif
         <li class="c-sidebar-nav-item">
-            <a href="#" class="c-sidebar-nav-link"
-               onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+            <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                 <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt">
 
                 </i>

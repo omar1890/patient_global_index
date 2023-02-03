@@ -10,6 +10,7 @@ use App\Models\Patient;
 use App\Models\Surgery;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class SurgeryController extends Controller
@@ -19,6 +20,10 @@ class SurgeryController extends Controller
         abort_if(Gate::denies('surgery_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $surgeries = Surgery::with(['patient'])->get();
+
+        if(Auth::user()->isPatient()) {
+            $surgeries = Surgery::where('patient_id',Auth::user()->patient->id)->with(['patient'])->get();
+        }
 
         $patients = Patient::get();
 

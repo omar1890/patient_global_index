@@ -11,6 +11,7 @@ use App\Models\Patient;
 use App\Models\PatientMedicine;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class PatientMedicineController extends Controller
@@ -20,6 +21,10 @@ class PatientMedicineController extends Controller
         abort_if(Gate::denies('patient_medicine_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $patientMedicines = PatientMedicine::with(['medicine', 'patient'])->get();
+
+        if(Auth::user()->isPatient()) {
+            $patientMedicines = PatientMedicine::where('patient_id',Auth::user()->patient->id)->with(['medicine','patient'])->get();
+        }
 
         $medicines = Medicine::get();
 

@@ -10,6 +10,7 @@ use App\Models\Patient;
 use App\Models\Vaccine;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class VaccineController extends Controller
@@ -19,6 +20,10 @@ class VaccineController extends Controller
         abort_if(Gate::denies('vaccine_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $vaccines = Vaccine::with(['patient'])->get();
+
+        if(Auth::user()->isPatient()) {
+            $vaccines = Vaccine::where('patient_id',Auth::user()->patient->id)->with(['patient'])->get();
+        }
 
         $patients = Patient::get();
 

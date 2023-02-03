@@ -10,6 +10,7 @@ use App\Models\Disease;
 use App\Models\Patient;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class DiseaseController extends Controller
@@ -19,6 +20,10 @@ class DiseaseController extends Controller
         abort_if(Gate::denies('disease_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $diseases = Disease::with(['patient'])->get();
+
+        if(Auth::user()->isPatient()) {
+            $diseases = Disease::where('patient_id',Auth::user()->patient->id)->with(['patient'])->get();
+        }
 
         $patients = Patient::get();
 
