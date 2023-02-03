@@ -59,7 +59,7 @@
             <div class="col-lg-6">
                 <div class="home-content">
                     <h1>Patient Global Index</h1>
-                    <p>System Description</p>
+                    <p>Healthcare facilities face challenges due to a lack of complete medical histories for patients, which can delay medical diagnoses and treatments, particularly in emergency situations. To resolve this issue, the Patient Global Index (PGI) system has been created to store and centralize patient medical records for easy access by both patients and medical staff.</p>
                 </div>
             </div>
             <div class="col-lg-6 order-first order-lg-last">
@@ -90,11 +90,10 @@
                 <div class="about-content">
 
                     <ul class="list-unstyled">
-                        <li id="problem"><i class="fa-solid fa-check"></i>dd</li>
-                        <li id="problem"><i class="fa-solid fa-check"></i>dd</li>
-                        <li id="problem"><i class="fa-solid fa-check"></i></li>
-                        <li id="problem"><i class="fa-solid fa-check"></i></li>
-                        <li id="problem"><i class="fa-solid fa-check"></i></li>
+                        <li id="problem"><i class="fa-solid fa-check"></i>Healthcare facilities often struggle with the lack of complete patient medical histories, which can hinder faster detection of health issues. ​</li>
+                        <li id="problem"><i class="fa-solid fa-check"></i>In emergency situations, this lack of information can even lead to delayed medical procedures, such as transfusions, due to unknown blood type. ​</li>
+                        <li id="problem"><i class="fa-solid fa-check"></i>Additionally, patients may experience frustration and repeated processes when transferring to different hospitals or when asked to recall past medical history. ​</li>
+                        <li id="problem"><i class="fa-solid fa-check"></i>To address these challenges, the Patient Global Index (PGI) has been created to centralize and store a patient's medical history, accessible to both patients and medical staff.​</li>
                     </ul>
                 </div>
             </div>
@@ -116,11 +115,9 @@
                     <div class="about-content">
 
                         <ul class="list-unstyled">
-                            <li><i class="fa-solid fa-check"></i>dd</li>
-                            <li><i class="fa-solid fa-check"></i>dd</li>
-                            <li><i class="fa-solid fa-check"></i></li>
-                            <li><i class="fa-solid fa-check"></i></li>
-                            <li><i class="fa-solid fa-check"></i></li>
+                            <li><i class="fa-solid fa-check"></i>A display of the patient's complete medical history, including information such as blood type, vaccines, past diagnoses, surgeries, etc.​</li>
+                            <li><i class="fa-solid fa-check"></i>Access for medical staff to view the patient's medical history to facilitate more accurate diagnoses and efficient procedures.​</li>
+                            <li><i class="fa-solid fa-check"></i>Patients can retrieve their medical history from any location, allowing them to easily track their health and recall important information such as vaccines.</li>
                         </ul>
                     </div>
                 </div>
@@ -153,9 +150,8 @@
             <div class="col-md-6 col-lg-4 d-flex">
                 <div class="col-lg-12 feature-items">
                     <div class="icon">
-                        <!-- we can put icon here from font awesone -->
-                        <h3>first</h3>
-                        <p>desc</p>
+                        <h3>Globalization</h3>
+                        <p>system is accessible at any place in the world you can take your medical info anywhere in the world</p>
                     </div>
                 </div>
             </div>

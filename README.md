@@ -3,24 +3,14 @@
 Patient global index system made with laravel framework
 
 ## Prerequisite
+
 the only prerequisite for our app is
-- **Docker**
+
+-   **Docker**
 
 ## env setup
+
 copy .env.example and rename it .env
-
-## configure your database in .env
-
-you should fill up the below variables
-
-```
-DB_CONNECTION="mysql"
-DB_HOST=
-DB_PORT=
-DB_DATABASE=
-DB_USERNAME=
-DB_PASSWORD=
-```
 
 ## installing dependencies
 
@@ -51,5 +41,3 @@ http://localhost:9001
 ## system is already up and working on the below url if you do not want to do all the above configs
 
 http://alb-5vuzizdmjzcvjttcp8.me-central-1.alb.aliyuncs.com/
-
-
