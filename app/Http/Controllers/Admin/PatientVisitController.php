@@ -27,6 +27,8 @@ class PatientVisitController extends Controller
         $patientVisitsQuery = PatientVisit::with(['hospital', 'patient', 'media']);
         if(Auth::user()->isHospital()) {
             $patientVisitsQuery->where('hospital_id',Auth::user()->hospital->id);
+        }else if(Auth::user()->isPatient()) {
+            $patientVisitsQuery->where('patient_id',Auth::user()->patient->id);
         }
         $patientVisits = $patientVisitsQuery->get();
         $hospitals = Hospital::get();

@@ -10,6 +10,7 @@ use App\Models\Allergy;
 use App\Models\Patient;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class AllergyController extends Controller
@@ -19,6 +20,10 @@ class AllergyController extends Controller
         abort_if(Gate::denies('allergy_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $allergies = Allergy::with(['patient'])->get();
+
+        if(Auth::user()->isPatient()) {
+            $allergies = Allergy::where('patient_id',Auth::user()->patient->id)->with(['patient'])->get();
+        }
 
         $patients = Patient::get();
 

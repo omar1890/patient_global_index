@@ -31,6 +31,9 @@
                         <span class="help-block">{{ trans('cruds.patientVisit.fields.hospital_helper') }}</span>
                     </div>
                 @endif
+            @if(\Auth::user()->isPatient())
+                <input type="hidden" name="patient_id" value="{{ \Auth::user()->patient->id }}">
+            @else
                 <div class="form-group">
                     <label class="required" for="patient_id">{{ trans('cruds.patientVisit.fields.patient') }}</label>
                     <select class="form-control select2 {{ $errors->has('patient') ? 'is-invalid' : '' }}"
@@ -47,6 +50,7 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.patientVisit.fields.patient_helper') }}</span>
                 </div>
+            @endif
                 <div class="form-group">
                     <label class="required"
                            for="doctor_name">{{ trans('cruds.patientVisit.fields.doctor_name') }}</label>

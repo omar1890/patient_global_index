@@ -29,6 +29,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.allergy.fields.description_helper') }}</span>
             </div>
+        @if(\Auth::user()->isPatient())
+            <input type="hidden" name="patient_id" value="{{ \Auth::user()->patient->id }}">
+        @else
             <div class="form-group">
                 <label class="required" for="patient_id">{{ trans('cruds.allergy.fields.patient') }}</label>
                 <select class="form-control select2 {{ $errors->has('patient') ? 'is-invalid' : '' }}" name="patient_id" id="patient_id" required>
@@ -43,6 +46,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.allergy.fields.patient_helper') }}</span>
             </div>
+        @endif
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
