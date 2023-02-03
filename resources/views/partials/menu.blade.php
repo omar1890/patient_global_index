@@ -62,7 +62,12 @@
         @endcan
         @can('hospital_access')
             <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.hospitals.index") }}"
+                <a
+                    @if(\Auth::user()->isHospital())
+                        href="{{ url("/admin/hospitals/".Auth::user()->hospital->id."/edit")  }}"
+                    @else
+                        href="{{ route("admin.hospitals.index") }}"
+                    @endif
                    class="c-sidebar-nav-link {{ request()->is("admin/hospitals") || request()->is("admin/hospitals/*") ? "c-active" : "" }}">
                     <i class="fa-fw fas fa-h-square c-sidebar-nav-icon">
 
