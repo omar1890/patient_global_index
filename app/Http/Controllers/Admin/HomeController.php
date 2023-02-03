@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController
 {
     public function index()
@@ -11,6 +13,10 @@ class HomeController
 
     public function landingPage()
     {
-        return view('landing-page');
+        if (Auth::user()) {
+            return redirect()->route('admin.home');
+        } else {
+            return view('landing-page');
+        }
     }
 }

@@ -91,7 +91,7 @@
                                 {{ trans('cruds.patient.title') }}
                             </a> --}}
                             <a
-                                @if(\Auth::user()->isPatient())
+                                @if(\Auth::user() && \Auth::user()->patient &&  \Auth::user()->isPatient())
                                     href="{{ url("/admin/patients/".Auth::user()->patient->id."/edit")  }}"
                                 @else
                                     href="{{ route("admin.patients.index") }}"

@@ -161,44 +161,22 @@
                 <div class="col-lg-12 feature-items">
                     <div class="icon">
                         <!-- we can put icon here from font awesone -->
-                        <h3>first</h3>
-                        <p>desc</p>
+                        <h3>Medical Record</h3>
+                        <p>Medical staff can check patients medical record only by filtering their ID</p>
                     </div>
                 </div>
             </div>
-            <!-- feature item end -->
-            <!-- feature item -->
+
             <div class="col-md-6 col-lg-4 d-flex">
                 <div class="col-lg-12 feature-items">
                     <div class="icon">
                         <!-- we can put icon here from font awesone -->
-                        <h3>first</h3>
-                        <p>desc</p>
+                        <h3>Mobile Application</h3>
+                        <p>Future feature</p>
                     </div>
                 </div>
             </div>
-            <!-- feature item end -->
-            <!-- feature item -->
-            <div class="col-md-6 col-lg-4 d-flex">
-                <div class="col-lg-12 feature-items">
-                    <div class="icon">
-                        <!-- we can put icon here from font awesone -->
-                        <h3>first</h3>
-                        <p>desc</p>
-                    </div>
-                </div>
-            </div>
-            <!-- feature item end -->
-            <!-- feature item -->
-            <div class="col-md-6 col-lg-4 d-flex">
-                <div class="col-lg-12 feature-items">
-                    <div class="icon">
-                        <!-- we can put icon here from font awesone -->
-                        <h3>first</h3>
-                        <p>desc</p>
-                    </div>
-                </div>
-            </div>
+
             <!-- feature item end -->
         </div>
     </div>
