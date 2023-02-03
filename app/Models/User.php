@@ -54,6 +54,11 @@ class User extends Authenticatable
         return $this->hasMany(Patient::class, 'user_id', 'id');
     }
 
+    public function hospital()
+    {
+        return $this->hasOne(Hospital::class, 'admin_id', 'id');
+    }
+
     public function getEmailVerifiedAtAttribute($value)
     {
         return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
@@ -91,7 +96,7 @@ class User extends Authenticatable
     }
 
     public function isHospital() {
-        return $this->roles()->where('title', 'patient')->exists();
+        return $this->roles()->where('title', 'hospital')->exists();
     }
 
     public function hasRole($role)

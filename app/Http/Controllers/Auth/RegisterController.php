@@ -61,6 +61,7 @@ class RegisterController extends Controller
     {
         return view('auth.register-patient');
     }
+
     protected function registerHospital()
     {
         return view('auth.register-hospital');
@@ -88,20 +89,24 @@ class RegisterController extends Controller
         session()->put('url.intended', "/admin/patients/$patient->id/edit");
         return redirect()->route('view.patient.login');
     }
+
     protected function createHospital(Request $request)
     {
         $user = User::create([
             'name' => $request->get('name'),
             'mobile' => $request->get('mobile'),
+            'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
         ]);
         $hospital = Hospital::create([
-            'name' => $request->get('hospital_name'),
+            'name' => $request->get('name'),
             'address' => $request->get('address'),
+            'admin_id' => $user->id,
         ]);
         $role = Role::where('title', 'hospital')->first();
         $user->roles()->sync([$role->id]);
 
-//        return redirect()->to("/admin/patients/$patient->id/edit");
+        session()->put('url.intended', "/admin/hospitals/$hospital->id/edit");
+        return redirect()->route('login');
     }
 }
