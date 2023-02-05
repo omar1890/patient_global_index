@@ -44,14 +44,14 @@
                     <div class="form-row">
                         <div class="col-lg-7">
                             <h6 style="color: white;">Password</h6>
-                            <input name="password_confirmed" type="password" class="form-control my-2 p-2"
+                            <input name="password" type="password" class="form-control my-2 p-2"
                                    placeholder="*******">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-lg-7">
                             <h6 style="color: white;">Confirm password</h6>
-                            <input type="password" class="form-control my-2 p-2" placeholder="*******">
+                            <input name="password_confirmed" type="password" class="form-control my-2 p-2" placeholder="*******">
                         </div>
                     </div>
 
